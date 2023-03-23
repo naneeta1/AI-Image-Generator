@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { preview } from '../assets';
 import {getRandomPrompt} from '../utils';
 import { Loader, Field } from '../form_components';
+
 const CreatePost = () => {
   const navigate = useNavigate();
   const [form, setForm] = useState({
@@ -67,22 +68,24 @@ const CreatePost = () => {
             placeholder={form.prompt}
             form={form.prompt }
             handleChange={handleChange}
-            isSurpriseMe
-            handleSurpriseMe={handleSurpriseMe}
           />
 
         <div class="flex justify-center">
-        <button type='button' onClick={generateImage} className='text-white bg-black font-medium rounded-md text-sm 
-              px-5 py-2.5'>
-          {generateImg ? 'Generating...':'Generate Image'}
-        </button>
+            <button type='button' onClick={handleSurpriseMe} 
+              className='text-white bg-black font-medium rounded-md text-sm  px-5 py-2.5 mb-2'>
+              Generate Prompt
+            </button>
+
+            <button type='button' onClick={generateImage} className='text-white bg-black font-medium rounded-md text-sm  px-5 py-2.5 ml-6 mb-2'>
+              {generateImg ? 'Generating...':'Generate Image'}
+            </button>
       </div>
-        <div className='relative bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:boder-blue-500 w-64 p-3 
-          h-64 flex justify-center items-center'>
+        <div className='relative bg-gray-50 border border-black text-gray-900 text-sm rounded-lg focus:boder-blue-500 w-64 p-3 
+          h-54 flex justify-center items-center ml-6'>
         {form.photo ? (<img src={form.photo} alt={form.prompt}
         className='w-full h-full object-contain' />):
         (<img src={preview} alt={preview} 
-        className='w-9/12 h-9/12 object-contain opacity-40'/>)}
+        className='w-9/12 h-9/12 object-contain opacity-40 ml-5'/>)}
         {generateImg && (
           <div className='absolute inset-0 flex justify-center items-center bg-[rgba(0,0,0,0,0.5)]
            rounded-lg '>
